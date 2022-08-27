@@ -1,4 +1,4 @@
-Learn how to build a basic Todo dApp using thirdweb
+### Learn how to build a basic Todo dApp using thirdweb
 What we will learn:
 We will build a basic to-do-dApp and as a result, you will learn how to write and read data from the contract using thirdweb’s react SDK. We will also learn how to add wallet connection using thirdweb and use web3’s most powerful tool thirdweb deploy for deployment purposes and you will also learn the easy process of setting that up.
 
