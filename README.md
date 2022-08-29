@@ -57,7 +57,7 @@ Now you have a hardhat project ready to go!
 
 #### Step 3:
 
-• Create a new file inside the contracts directory called `Todo.sol`.
+• Create a new file inside the contracts directory called Todo.sol
 ```solidity
 // SPDX-License-Identifier: MIT
 
@@ -425,4 +425,4 @@ export default Header
 
 • And that's a wrap in just 10 steps we were able to build our dApp using thirdweb deploy and thirdweb React SDK we just made the process a lot easier, more convenient, and secure.
 
-. [Click here to see the github repository](https://github.com/Abbas-Khann/thirdweb-deploy-todo-dApp).
+ [Click here to see the github repository](https://github.com/Abbas-Khann/thirdweb-deploy-todo-dApp).
