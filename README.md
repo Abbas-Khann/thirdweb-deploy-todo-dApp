@@ -1,55 +1,64 @@
-# Learn how to build a basic Todo dApp using thirdweb
-What we will learn:
+# Learn how to build a basic Todo dApp using thirdweb deploy and React SDK
+
+## What we will learn:
 We will build a basic to-do-dApp and as a result, you will learn how to write and read data from the contract using thirdweb’s react SDK. We will also learn how to add wallet connection using thirdweb and use web3’s most powerful tool thirdweb deploy for deployment purposes and you will also learn the easy process of setting that up.
 
-Tech Stack:
-Solidity
-Hardhat
-Thirdweb deploy, Thirdweb dashboard, Thirdweb React SDK
-Next
-Tailwindcss
-Javascript/Typescript
-Note: Also make sure you have Metamask installed Since we will be using it to interact with our application.
+### Tech Stack:
+- Solidity
+- Hardhat
+- Thirdweb deploy, Thirdweb dashboard, Thirdweb React SDK
+- Next
+- Tailwindcss
+- Javascript/Typescript
 
-Here's a good video that will help you download Metamask
+**Note**: Also make sure you have Metamask installed Since we will be using it to interact with our application.
 
-Let's Start Building:
-Smart Contract
+[Here's a good video that will help you download Metamask](youtube.com/watch?v=afATAw7iuUM)
+
+## Let's Start Building:
+
+### Smart Contract: 
+
 To build the smart contract we will be using Hardhat. Hardhat is an Ethereum development environment and framework designed for full stack development in Solidity. In simple words, you can write your smart contract, deploy them, run tests, and debug your code.
 
-Step 1:
+#### Step 1:
 
 You need to create a twdeploy folder where hardhat project and your Next.js app will later go.
 
 • Open up a terminal and execute these commands
-
+```
 mkdir twdeploy
 cd twdeploy
-Step 2:
+```
+
+#### Step 2:
 
 In the same directory where you installed Hardhat run:
 
-npx hardhat run 
+```npm
+npx hardhat run
+```
+ 
 Hardhat will give you a few options after the command is executed.
 
 What do you want to do?
 
-Create a JavaScript project
+- Create a JavaScript project
 
-Create a TypeScript project
+- Create a TypeScript project
 
-Create an empty hardhat.config.js
+- Create an empty hardhat.config.js
 
-Quit
+- Quit
 
 Choose the first or the second option and click ok on all the options later on. Also, it really doesn't matter whether you pick Typescript or Javascript.
 
 Now you have a hardhat project ready to go!
 
-Step 3:
+#### Step 3:
 
 • Create a new file inside the contracts directory called Todo.sol
-
+```solidity
 // SPDX-License-Identifier: MIT
 
 
@@ -80,59 +89,80 @@ function deleteToDo(uint _index) public {
     require(_index < todos.length, "This todo index does not exist.");
     todos[_index] = todos[getTodosLength() - 1];
     todos.pop();
-	}
+  }
 }
+
 // We are using the pop method to remove a todo from the array as you can see we are basically just removing one index 
+```
+
 Now that we have written our basic Todo List Smart contract we will go ahead and deploy our contract using thirdweb deploy.
+
 Oh wait, you thought we would be setting up rpc URLs, exporting private keys and writing scripts, etc? Nope! thirdweb deploy has made the whole process 10x easier just write your contract and deploy.
 
-Step 4: Deploy the contract
+#### Step 4: Deploy the contract
 
+```npm
 npx thirdweb deploy
+```
+
 This command allows you to avoid the painful process of setting up your entire project and sets up everything on its own which also makes it more convenient and secure since you’re not exporting private keys or doing any other setup.
 
-Note: If you don't have thirdweb setup already it will ask you to download the required packages and the contract you want to deploy if you happen to have multiple files.
+**Note:** If you don't have thirdweb setup already it will ask you to download the required packages and the contract you want to deploy if you happen to have multiple files.
 
 Upon success, you should be able to see a link to the dashboard in your cli.
 
 Now you can choose any mainnet or testnet chain that you want to deploy your contract on.
 
-I will deploy my contract to Mumbai(MATIC) and click on the Deploy Now button which will trigger two transactions.
+I will deploy my contract to Mumbai(MATIC) and click on the `Deploy Now` button which will trigger two transactions.
 
 After the transactions are mined you will be taken to the dashboard which consists of many options.
 
-In the overview section, you can explore your contract and interact with the functions without having to integrate them within your frontend code yet so it gives you a better idea of how your functions are working and also acts as a good testing environment.
+- In the **overview** section, you can explore your contract and interact with the functions without having to integrate them within your frontend code yet so it gives you a better idea of how your functions are working and also acts as a good testing environment.
 
-In the code section, you see the different languages and ways you can interact with your contract. Which we will look into later on in the tutorial.
+- In the **code** section, you see the different languages and ways you can interact with your contract. Which we will look into later on in the tutorial.
 
-In the activity section, you are able to see all the transactions you make.
+- In the **activity** section, you are able to see all the transactions you make.
 
-You can also customize the settings after enabling the required interfaces in the settings section.
+- You can also customize the **settings** after enabling the required interfaces in the settings section.
 
-In the source section, you can see your smart contract and it also gives you a verification button to the relevant chain you have deployed your contract to.
+- In the **source** section, you can see your smart contract and it also gives you a verification button to the relevant chain you have deployed your contract to.
 
 Well, that's enough explaining let's get right into the frontend and wrap up our dApp since most of the work was already done by thirdweb deploy.
 
-Step 5: Go ahead and create a frontend folder after exiting the twdeploy folder.
+### Step 5: Go ahead and create a frontend folder after exiting the twdeploy folder.
 
+```
 mkdir frontend
 cd frontend
-• Inside the frontend folder run the following command and set up a Next.js project.
+```
 
-npx create-next-app@latest
+• Inside the frontend folder run the following command and set up a Next.js project.
+```npm
+npx create-next-app@latest ./
+```
+
 Your Next app should be set up in a minute and you should be good to go.
-Step 6:
+
+#### Step 6:
 
 Now go ahead and run the following command to set up thirdweb and install the packages into an existing Next project.
+
 Run this to install with npm
 
-    npm install @thirdweb-dev/react @thirdweb-dev/sdk ethers
+```
+npm install @thirdweb-dev/react @thirdweb-dev/sdk ethers
+```
+
 Or run this to install with yarn
+```
 yarn add @thirdweb-dev/react @thirdweb-dev/sdk ethers
-To get started with wallet connection, We need to install our packages into an existing React/Next project
+```
 
-Once you've installed the necessary packages, Go to pages/_app.js file and set up the ThirdwebProvider to wrap the rest of your application:
+- To get started with wallet connection, We need to install our packages into an existing React/Next project.
 
+Once you've installed the necessary packages, Go to `pages/_app.js` file and set up the ThirdwebProvider to wrap the rest of your application:
+
+```Typescript
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
 
 function MyApp({ Component, pageProps }) {
@@ -150,17 +180,21 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-Now we are ready to use one of thirdweb's wallet connection hooks to interact with our dApp.
+```
 
-We will create a components folder and create a component called ConnectWallet.tsx if you're using Javascript you may want to use .js at the end of each component name.
+- Now we are ready to use one of thirdweb's wallet connection hooks to interact with our dApp.
+
+We will create a components folder and create a component called `ConnectWallet.tsx` if you're using Javascript you may want to use `.js` at the end of each component name.
 
 Also make sure you set up tailwindcss if you want to add styles to your dApp.
 
-Step 7:
+#### Step 7:
 
-Let’s write code for ConnectWallet.tsx file.
-Note: Each line of code is explained in the comments below.
+Let’s write code for `ConnectWallet.tsx` file.
 
+**Note:** Each line of code is explained in the comments below.
+
+```Typescript
 import { useMetamask, useAddress, useDisconnect } from "@thirdweb-dev/react";
 // First off we will import the above hooks from the package we installed
 import React from "react";
@@ -196,11 +230,16 @@ export const ConnectWallet = () => {
     </div>
   );
 };
-If you want more hooks for more wallets you can use this blog for all the available wallets that thirdweb supports Click here.
-Now we can import this hook wherever we want, So we will import it inside the Header component later on but before that let's get straight into the index.tsx or index.js if you’re using JS.
-Step 8:
+```
 
-Let’s write code for our Index.tsx file.
+If you want more hooks for more wallets you can use this blog for all the available wallets that thirdweb supports [Click here](https://blog.thirdweb.com/guides/add-connectwallet-to-your-website/#:~:text=thirdweb's%20connect%20wallet%20button%20makes,to%20your%20site%20or%20app).
+
+Now we can import this hook wherever we want, So we will import it inside the Header component later on but before that let's get straight into the index.tsx or index.js if you’re using JS.
+
+#### Step 8:
+
+Let’s write code for our `Index.tsx` file.
+```Typescript
 import React, { useState } from "react"
 import type { NextPage } from "next"
 import {
@@ -287,11 +326,15 @@ const Home: NextPage = () => {
 }
 
 export default Home
+```
+
 • Now that we have seen all the functions and how we can use them let's head over to the List.tsx or List.js component and write the necessary code there.
 
-Step 9:
+#### Step 9:
 
-Let’s write code for our List.tsx file.
+Let’s write code for our `List.tsx` file.
+
+```Typescript
 import React from "react"
 import { TiDeleteOutline } from "react-icons/ti"
 // Make sure you download react icons using  npm install react-icons
@@ -320,11 +363,14 @@ const List = (props: any) => {
 }
 
 export default List
-Step 10:
+```
 
-• Let’s render our ConnectWallet Component inside our Header.tsx/js/jsx and wrap up our dApp.
+#### Step 10:
 
-    import React, { useState } from "react"
+• Let’s render our ConnectWallet Component inside our `Header.tsx/js/jsx` and wrap up our dApp.
+
+```Typescript
+import React, { useState } from "react"
 import { ConnectWallet } from "./ConnectWallet"
 // Imported the hook
 const Header = (props: any) => {
@@ -375,6 +421,8 @@ const Header = (props: any) => {
   )
 }
 export default Header
+```
+
 • And that's a wrap in just 10 steps we were able to build our dApp using thirdweb deploy and thirdweb React SDK we just made the process a lot easier, more convenient, and secure.
 
-. To see the github repository click here
+. [Click here to see the github repository](https://github.com/Abbas-Khann/thirdweb-deploy-todo-dApp).
