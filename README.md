@@ -57,7 +57,7 @@ Now you have a hardhat project ready to go!
 
 #### Step 3:
 
-• Create a new file inside the contracts directory called Todo.sol
+• Create a new file inside the contracts directory called `Todo.sol`.
 ```solidity
 // SPDX-License-Identifier: MIT
 
