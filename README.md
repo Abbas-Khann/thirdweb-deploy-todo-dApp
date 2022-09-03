@@ -423,6 +423,6 @@ const Header = (props: any) => {
 export default Header
 ```
 
-• And that's a wrap in just 10 steps we were able to build our dApp using thirdweb deploy and thirdweb React SDK we just made the process a lot easier, more convenient, and secure.
+• And that's a wrap in just 10 steps, We were able to build our dApp using thirdweb deploy and thirdweb React SDK we just made the process a lot easier, more convenient, and secure.
 
  [Click here to see the github repository](https://github.com/Abbas-Khann/thirdweb-deploy-todo-dApp).
