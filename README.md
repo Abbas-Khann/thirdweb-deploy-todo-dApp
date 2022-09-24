@@ -234,7 +234,7 @@ export const ConnectWallet = () => {
 
 If you want more hooks for more wallets you can use this blog for all the available wallets that thirdweb supports [Click here](https://blog.thirdweb.com/guides/add-connectwallet-to-your-website/#:~:text=thirdweb's%20connect%20wallet%20button%20makes,to%20your%20site%20or%20app).
 
-Now we can import this hook wherever we want, So we will import it inside the Header component later on but before that let's get straight into the index.tsx or index.js if you’re using JS.
+- Now we can import this hook wherever we want, So we will import it inside the Header component later on but before that let's get straight into the index.tsx or index.js if you’re using JS.
 
 #### Step 8:
 
